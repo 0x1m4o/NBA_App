@@ -1,5 +1,3 @@
 abstract class RouteName {
-  static const welcome = '/';
-  static const homePage = 'home';
-  static const coursePage = 'detail';
+  static const homePage = '/home';
 }

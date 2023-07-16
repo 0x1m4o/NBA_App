@@ -12,7 +12,7 @@ class WelcomePage extends StatelessWidget {
       body: Center(
         child: ElevatedButton(
             onPressed: () {
-              context.pushReplacementNamed(RouteName.homePage);
+              context.goNamed(RouteName.homePage);
             },
             child: const Text('Home')),
       ),
