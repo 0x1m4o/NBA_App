@@ -1,9 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:dartz/dartz.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:nba_api/domain/core/models/server_failure.dart';
-
 import 'package:nba_api/domain/players/models/player.dart';
 import 'package:nba_api/domain/players/models/player_detail.dart';
 import 'package:nba_api/domain/players/repositories/player_repository_impl.dart';
