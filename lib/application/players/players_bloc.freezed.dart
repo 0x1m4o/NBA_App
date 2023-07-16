@@ -16,19 +16,20 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$PlayerEvent {
+  int get page => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() fetched,
+    required TResult Function(int page) fetched,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? fetched,
+    TResult? Function(int page)? fetched,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? fetched,
+    TResult Function(int page)? fetched,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -48,6 +49,10 @@ mixin _$PlayerEvent {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $PlayerEventCopyWith<PlayerEvent> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -55,6 +60,8 @@ abstract class $PlayerEventCopyWith<$Res> {
   factory $PlayerEventCopyWith(
           PlayerEvent value, $Res Function(PlayerEvent) then) =
       _$PlayerEventCopyWithImpl<$Res, PlayerEvent>;
+  @useResult
+  $Res call({int page});
 }
 
 /// @nodoc
@@ -66,13 +73,30 @@ class _$PlayerEventCopyWithImpl<$Res, $Val extends PlayerEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? page = null,
+  }) {
+    return _then(_value.copyWith(
+      page: null == page
+          ? _value.page
+          : page // ignore: cast_nullable_to_non_nullable
+              as int,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$PlayerFetchedCopyWith<$Res> {
+abstract class _$$PlayerFetchedCopyWith<$Res>
+    implements $PlayerEventCopyWith<$Res> {
   factory _$$PlayerFetchedCopyWith(
           _$PlayerFetched value, $Res Function(_$PlayerFetched) then) =
       __$$PlayerFetchedCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({int page});
 }
 
 /// @nodoc
@@ -82,51 +106,75 @@ class __$$PlayerFetchedCopyWithImpl<$Res>
   __$$PlayerFetchedCopyWithImpl(
       _$PlayerFetched _value, $Res Function(_$PlayerFetched) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? page = null,
+  }) {
+    return _then(_$PlayerFetched(
+      page: null == page
+          ? _value.page
+          : page // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$PlayerFetched implements PlayerFetched {
-  const _$PlayerFetched();
+  const _$PlayerFetched({required this.page});
+
+  @override
+  final int page;
 
   @override
   String toString() {
-    return 'PlayerEvent.fetched()';
+    return 'PlayerEvent.fetched(page: $page)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$PlayerFetched);
+        (other.runtimeType == runtimeType &&
+            other is _$PlayerFetched &&
+            (identical(other.page, page) || other.page == page));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, page);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$PlayerFetchedCopyWith<_$PlayerFetched> get copyWith =>
+      __$$PlayerFetchedCopyWithImpl<_$PlayerFetched>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() fetched,
+    required TResult Function(int page) fetched,
   }) {
-    return fetched();
+    return fetched(page);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? fetched,
+    TResult? Function(int page)? fetched,
   }) {
-    return fetched?.call();
+    return fetched?.call(page);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? fetched,
+    TResult Function(int page)? fetched,
     required TResult orElse(),
   }) {
     if (fetched != null) {
-      return fetched();
+      return fetched(page);
     }
     return orElse();
   }
@@ -161,7 +209,14 @@ class _$PlayerFetched implements PlayerFetched {
 }
 
 abstract class PlayerFetched implements PlayerEvent {
-  const factory PlayerFetched() = _$PlayerFetched;
+  const factory PlayerFetched({required final int page}) = _$PlayerFetched;
+
+  @override
+  int get page;
+  @override
+  @JsonKey(ignore: true)
+  _$$PlayerFetchedCopyWith<_$PlayerFetched> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -171,7 +226,7 @@ mixin _$PlayerState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String message) failure,
-    required TResult Function(Players players) loadSuccess,
+    required TResult Function(List<PlayerDetail> players) loadSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -179,7 +234,7 @@ mixin _$PlayerState {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(String message)? failure,
-    TResult? Function(Players players)? loadSuccess,
+    TResult? Function(List<PlayerDetail> players)? loadSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -187,7 +242,7 @@ mixin _$PlayerState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String message)? failure,
-    TResult Function(Players players)? loadSuccess,
+    TResult Function(List<PlayerDetail> players)? loadSuccess,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -276,7 +331,7 @@ class _$_Initial implements _Initial {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String message) failure,
-    required TResult Function(Players players) loadSuccess,
+    required TResult Function(List<PlayerDetail> players) loadSuccess,
   }) {
     return initial();
   }
@@ -287,7 +342,7 @@ class _$_Initial implements _Initial {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(String message)? failure,
-    TResult? Function(Players players)? loadSuccess,
+    TResult? Function(List<PlayerDetail> players)? loadSuccess,
   }) {
     return initial?.call();
   }
@@ -298,7 +353,7 @@ class _$_Initial implements _Initial {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String message)? failure,
-    TResult Function(Players players)? loadSuccess,
+    TResult Function(List<PlayerDetail> players)? loadSuccess,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -390,7 +445,7 @@ class _$_PlayerLoading implements _PlayerLoading {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String message) failure,
-    required TResult Function(Players players) loadSuccess,
+    required TResult Function(List<PlayerDetail> players) loadSuccess,
   }) {
     return loading();
   }
@@ -401,7 +456,7 @@ class _$_PlayerLoading implements _PlayerLoading {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(String message)? failure,
-    TResult? Function(Players players)? loadSuccess,
+    TResult? Function(List<PlayerDetail> players)? loadSuccess,
   }) {
     return loading?.call();
   }
@@ -412,7 +467,7 @@ class _$_PlayerLoading implements _PlayerLoading {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String message)? failure,
-    TResult Function(Players players)? loadSuccess,
+    TResult Function(List<PlayerDetail> players)? loadSuccess,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -530,7 +585,7 @@ class _$_PlayerFailure implements _PlayerFailure {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String message) failure,
-    required TResult Function(Players players) loadSuccess,
+    required TResult Function(List<PlayerDetail> players) loadSuccess,
   }) {
     return failure(message);
   }
@@ -541,7 +596,7 @@ class _$_PlayerFailure implements _PlayerFailure {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(String message)? failure,
-    TResult? Function(Players players)? loadSuccess,
+    TResult? Function(List<PlayerDetail> players)? loadSuccess,
   }) {
     return failure?.call(message);
   }
@@ -552,7 +607,7 @@ class _$_PlayerFailure implements _PlayerFailure {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String message)? failure,
-    TResult Function(Players players)? loadSuccess,
+    TResult Function(List<PlayerDetail> players)? loadSuccess,
     required TResult orElse(),
   }) {
     if (failure != null) {
@@ -614,9 +669,7 @@ abstract class _$$_PlayerLoadSuccessCopyWith<$Res> {
           $Res Function(_$_PlayerLoadSuccess) then) =
       __$$_PlayerLoadSuccessCopyWithImpl<$Res>;
   @useResult
-  $Res call({Players players});
-
-  $PlayersCopyWith<$Res> get players;
+  $Res call({List<PlayerDetail> players});
 }
 
 /// @nodoc
@@ -634,28 +687,26 @@ class __$$_PlayerLoadSuccessCopyWithImpl<$Res>
   }) {
     return _then(_$_PlayerLoadSuccess(
       null == players
-          ? _value.players
+          ? _value._players
           : players // ignore: cast_nullable_to_non_nullable
-              as Players,
+              as List<PlayerDetail>,
     ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $PlayersCopyWith<$Res> get players {
-    return $PlayersCopyWith<$Res>(_value.players, (value) {
-      return _then(_value.copyWith(players: value));
-    });
   }
 }
 
 /// @nodoc
 
 class _$_PlayerLoadSuccess implements _PlayerLoadSuccess {
-  const _$_PlayerLoadSuccess(this.players);
+  const _$_PlayerLoadSuccess(final List<PlayerDetail> players)
+      : _players = players;
 
+  final List<PlayerDetail> _players;
   @override
-  final Players players;
+  List<PlayerDetail> get players {
+    if (_players is EqualUnmodifiableListView) return _players;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_players);
+  }
 
   @override
   String toString() {
@@ -667,11 +718,12 @@ class _$_PlayerLoadSuccess implements _PlayerLoadSuccess {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_PlayerLoadSuccess &&
-            (identical(other.players, players) || other.players == players));
+            const DeepCollectionEquality().equals(other._players, _players));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, players);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_players));
 
   @JsonKey(ignore: true)
   @override
@@ -686,7 +738,7 @@ class _$_PlayerLoadSuccess implements _PlayerLoadSuccess {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String message) failure,
-    required TResult Function(Players players) loadSuccess,
+    required TResult Function(List<PlayerDetail> players) loadSuccess,
   }) {
     return loadSuccess(players);
   }
@@ -697,7 +749,7 @@ class _$_PlayerLoadSuccess implements _PlayerLoadSuccess {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(String message)? failure,
-    TResult? Function(Players players)? loadSuccess,
+    TResult? Function(List<PlayerDetail> players)? loadSuccess,
   }) {
     return loadSuccess?.call(players);
   }
@@ -708,7 +760,7 @@ class _$_PlayerLoadSuccess implements _PlayerLoadSuccess {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String message)? failure,
-    TResult Function(Players players)? loadSuccess,
+    TResult Function(List<PlayerDetail> players)? loadSuccess,
     required TResult orElse(),
   }) {
     if (loadSuccess != null) {
@@ -756,10 +808,10 @@ class _$_PlayerLoadSuccess implements _PlayerLoadSuccess {
 }
 
 abstract class _PlayerLoadSuccess implements PlayerState {
-  const factory _PlayerLoadSuccess(final Players players) =
+  const factory _PlayerLoadSuccess(final List<PlayerDetail> players) =
       _$_PlayerLoadSuccess;
 
-  Players get players;
+  List<PlayerDetail> get players;
   @JsonKey(ignore: true)
   _$$_PlayerLoadSuccessCopyWith<_$_PlayerLoadSuccess> get copyWith =>
       throw _privateConstructorUsedError;
